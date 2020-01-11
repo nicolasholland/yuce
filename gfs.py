@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import datetime
 from pvlib.forecast import GFS
@@ -14,18 +15,36 @@ LOCATIONS = {"北京" : (34.3416, 108.9398),
              "台北" : (25.0330, 121.5654),
              "新加坡" : (1.3521, 103.8198)}
 
-def ghi(latitude, longitude, title):
-    """
-    Found Wall time: 9.07 s
-    """
+def get_data():
+    filename = pd.Timestamp.utcnow().strftime("%Y%m%d.hdf")
+
+    files = os.listdir("data")
+    retval = []
+    if filename not in files:
+        for loc in LOCATIONS.keys():
+            df = download_data(*LOCATIONS[loc])
+            df.to_hdf(os.path.join("data", filename), loc)
+
+            retval.append(df)
+
+    else:
+        for loc in LOCATIONS.keys():
+            df = pd.read_hdf(os.path.join("data", filename), loc)
+            retval.append(df)
+
+    return retval
+
+def download_data(latitude, longitude):
     start = pd.Timestamp(datetime.date.today())
     end = start + pd.Timedelta(days=2)
-
     gfs = GFS()
+
     data = gfs.get_processed_data(latitude, longitude, start, end)
     clouds = data['total_clouds'].resample("5min").interpolate()
     df = gfs.cloud_cover_to_irradiance(clouds, how='clearsky_scaling')
+    return df
 
+def ghi(df, title):
     ghi = df.ghi
 
     ax = ghi.plot()

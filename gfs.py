@@ -21,6 +21,8 @@ def get_data():
     files = os.listdir("data")
     retval = []
     if filename not in files:
+        clearcache(files)
+
         for loc in LOCATIONS.keys():
             df = download_data(*LOCATIONS[loc])
             df.to_hdf(os.path.join("data", filename), loc)
@@ -33,6 +35,13 @@ def get_data():
             retval.append(df)
 
     return retval
+
+def clearcache(files):
+    for filename in files:
+        try:
+            os.remove(os.path.join("data", filename))
+        except Exception as err:
+            print(err)
 
 def download_data(latitude, longitude):
     start = pd.Timestamp(datetime.date.today())

@@ -19,20 +19,19 @@ def get_data():
     filename = pd.Timestamp.utcnow().strftime("%Y%m%d.hdf")
 
     files = os.listdir("data")
-    retval = []
+    retval = {}
     if filename not in files:
         clearcache(files)
-
         for loc in LOCATIONS.keys():
             df = download_data(*LOCATIONS[loc])
             df.to_hdf(os.path.join("data", filename), loc)
 
-            retval.append(df)
+            retval[loc] = df
 
     else:
         for loc in LOCATIONS.keys():
             df = pd.read_hdf(os.path.join("data", filename), loc)
-            retval.append(df)
+            retval[loc] = df
 
     return retval
 
@@ -53,17 +52,26 @@ def download_data(latitude, longitude):
     df = gfs.cloud_cover_to_irradiance(clouds, how='clearsky_scaling')
     return df
 
-def ghi(df, title):
-    ghi = df.ghi
+def ghi(data):
+    start = pd.Timestamp(datetime.date.today())
+    end = start + pd.Timedelta(hours=40)
 
-    ax = ghi.plot()
+    fig = plt.figure(figsize=(6, 6), dpi=100)
+    ax = fig.add_axes()
+
+    for loc in data.keys():
+        ghi = data[loc].loc[:end].ghi
+        ax = ghi.plot(ax=ax, label=loc)
+
+
     plt.ylabel("GHI FORECAST [W/m²]")
-    plt.title(title)
+    plt.legend()
+    plt.title("GFS 预测")
 
     ax.axvline(pd.Timestamp.utcnow().floor("10min"), color="orange",
                linestyle="--")
     buf = BytesIO()
-    plt.savefig(buf, format="png", bbox_inches=None, pad_inches=0.1)
+    plt.savefig(buf, format="png", bbox_inches=None, pad_inches=0.1, dpi=100)
     plt.close()
     buf.seek(0)
 

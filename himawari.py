@@ -15,6 +15,6 @@ def getimage():
     c = requests.get(saturl()).content
     img = imageio.imread(c)
 
-    return img
+    return img[1:, 1:]
 
 

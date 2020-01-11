@@ -52,11 +52,11 @@ def download_data(latitude, longitude):
     df = gfs.cloud_cover_to_irradiance(clouds, how='clearsky_scaling')
     return df
 
-def ghi(data):
+def plot(data):
     start = pd.Timestamp(datetime.date.today())
     end = start + pd.Timedelta(hours=40)
 
-    fig = plt.figure(figsize=(6, 6), dpi=100)
+    fig = plt.figure(figsize=(8, 6), dpi=100)
     ax = fig.add_axes()
 
     for loc in data.keys():
@@ -77,3 +77,7 @@ def ghi(data):
 
     return imageio.imread(buf)
 
+def gfs():
+    data = get_data()
+    img = plot(data)
+    return img[:,:,:3]

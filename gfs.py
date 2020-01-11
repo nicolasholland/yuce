@@ -18,6 +18,9 @@ LOCATIONS = {"北京" : (34.3416, 108.9398),
 def get_data():
     filename = pd.Timestamp.utcnow().strftime("%Y%m%d.hdf")
 
+    if not os.path.exists("data"):
+        os.mkdir("data")
+
     files = os.listdir("data")
     retval = {}
     if filename not in files:

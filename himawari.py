@@ -1,6 +1,4 @@
-import os
 import pandas as pd
-import urllib
 import requests
 import imageio
 

@@ -3,3 +3,5 @@ imageio
 pvlib
 matplotlib
 seaborn
+gunicorn
+flask

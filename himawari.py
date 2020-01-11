@@ -8,13 +8,13 @@ def saturl():
     retval = base + time.strftime("fd__b03_%H%M.jpg")
     return retval
 
-def main(buffertime=3):
+def getimage():
+    """
+    Wall time: 165 ms
+    """
     c = requests.get(saturl()).content
     img = imageio.imread(c)
 
     return img
 
-
-if __name__ == '__main__':
-    main()
 

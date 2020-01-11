@@ -9,11 +9,17 @@ import imageio
 import matplotlib
 matplotlib.rc('font', family='Source Han Sans CN')
 
-def ghi():
-    latitude = 34.3416
-    longitude = 108.9398
+LOCATIONS = {"北京" : (34.3416, 108.9398),
+             "上海" : (31.2304, 121.4737),
+             "台北" : (25.0330, 121.5654),
+             "新加坡" : (1.3521, 103.8198)}
+
+def ghi(latitude, longitude, title):
+    """
+    Found Wall time: 9.07 s
+    """
     start = pd.Timestamp(datetime.date.today())
-    end = start + pd.Timedelta(days=1)
+    end = start + pd.Timedelta(days=2)
 
     gfs = GFS()
     data = gfs.get_processed_data(latitude, longitude, start, end)
@@ -24,7 +30,7 @@ def ghi():
 
     ax = ghi.plot()
     plt.ylabel("GHI FORECAST [W/m²]")
-    plt.title("北京")
+    plt.title(title)
 
     ax.axvline(pd.Timestamp.utcnow().floor("10min"), color="orange",
                linestyle="--")

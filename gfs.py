@@ -6,6 +6,9 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import imageio
 
+import matplotlib
+matplotlib.rc('font', family='Source Han Sans CN')
+
 def ghi():
     latitude = 34.3416
     longitude = 108.9398
@@ -32,10 +35,3 @@ def ghi():
 
     return imageio.imread(buf)
 
-
-def main():
-    ghi()
-
-
-if __name__ == '__main__':
-    main()

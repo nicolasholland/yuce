@@ -1,6 +1,18 @@
 我的预测
 ====
 
+<table>
+<tr>
+  <td>Build Status</td>
+  <td>
+    <a href="https://travis-ci.com/nicolasholland/yuce">
+    <img src="https://api.travis-ci.org/nicolasholland/yuce.svg?branch=master" alt="travis build status" />
+    </a>
+  </td>
+</tr>
+</table>
+
+
 Run app with
 
 ```

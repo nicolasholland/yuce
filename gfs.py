@@ -1,4 +1,5 @@
 import os
+from os.path import dirname, join
 import pandas as pd
 import datetime
 from pvlib.forecast import GFS
@@ -14,6 +15,9 @@ LOCATIONS = {"北京" : (34.3416, 108.9398),
              "上海" : (31.2304, 121.4737),
              "台北" : (25.0330, 121.5654),
              "新加坡" : (1.3521, 103.8198)}
+
+TITLE = imageio.imread(join(dirname(__file__), "images/title.png"))
+LEGEND = imageio.imread(join(dirname(__file__), "images/legend.png"))
 
 def get_data():
     filename = pd.Timestamp.utcnow().strftime("%Y%m%d.hdf")
@@ -83,4 +87,8 @@ def plot(data):
 def gfs():
     data = get_data()
     img = plot(data)
+
+    img[46:46+23, 408:408+39, :] = TITLE[:, :, :]
+    img[84:84+93, 658:658+52, :] = LEGEND[:, :, :]
+
     return img[:,:,:3]

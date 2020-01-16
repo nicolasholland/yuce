@@ -88,7 +88,7 @@ def gfs():
     data = get_data()
     img = plot(data)
 
-    img[46:46+23, 428:428+39, :] = TITLE[:, :, :]
-    img[80:80+93, 658:658+52, :] = LEGEND[:, :, :]
+    img[46:46+23, 411:411+39, :] = TITLE[:, :, :]
+    img[82:82+93, 658:658+52, :] = LEGEND[:, :, :]
 
     return img[:,:,:3]

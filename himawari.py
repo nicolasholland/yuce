@@ -1,3 +1,4 @@
+from os.path import join, dirname
 import pandas as pd
 import requests
 import imageio
@@ -12,9 +13,16 @@ def getimage():
     """
     Wall time: 165 ms
     """
-    c = requests.get(saturl()).content
-    img = imageio.imread(c)
+    try:
+        c = requests.get(saturl()).content
+        img = imageio.imread(c)
+        img = img[1:, 1:]
+        imageio.imwrite(join(dirname(__file__), "data/sat.png"), img)
 
-    return img[1:, 1:]
+    except Exception as err:
+        img = imageio.imread(join(dirname(__file__), "data/sat.png"))
+        print(err)
+
+    return img
 
 

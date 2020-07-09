@@ -9,3 +9,4 @@ pvlib
 siphon
 tables
 netcdf4
+cftime==1.0.4

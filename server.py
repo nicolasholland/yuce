@@ -32,7 +32,7 @@ def satellite():
 def json():
     df = gfs.get_data()
 
-    start = pd.Timestamp(datetime.date.today())
+    start = pd.Timestamp(datetime.date.today(), tz="UTC")
     end = start + pd.Timedelta(hours=40)
 
     data = pd.DataFrame()

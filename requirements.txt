@@ -1,11 +1,11 @@
 pandas
+flask-cors
 imageio
-pvlib
+pvlib==0.7.1
 matplotlib
 seaborn
 gunicorn
 flask
-pvlib
 siphon
 tables
 netcdf4

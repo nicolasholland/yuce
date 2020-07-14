@@ -1,4 +1,5 @@
 pandas
+flask-cors
 imageio
 pvlib
 matplotlib

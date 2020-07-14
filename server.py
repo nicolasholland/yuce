@@ -1,4 +1,5 @@
 from flask import Flask, render_template, Response, jsonify
+from flask_cors import CORS
 import pandas as pd
 import datetime
 import combine
@@ -9,6 +10,7 @@ import io
 import imageio
 
 server = Flask(__name__)
+CORS(server)
 
 @server.route('/')
 def serve():

@@ -4,6 +4,9 @@ import datetime
 import combine
 import gfs
 import json_response
+import himawari
+import io
+import imageio
 
 server = Flask(__name__)
 
@@ -16,6 +19,12 @@ def current():
     image = combine.image()
     return Response(image.getvalue(), mimetype='image/png')
 
+@server.route('/satellite.png')
+def satellite():
+    sat = himawari.getimage()
+    retval = io.BytesIO()
+    imageio.imwrite(retval, sat, format="png")
+    return Response(retval.getvalue(), mimetype='image/png')
 
 @server.route('/data.json')
 def json():

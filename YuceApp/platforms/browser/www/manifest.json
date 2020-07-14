@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Yuce",
+  "short_name": "Yuce",
+  "version": "io.cordova.hellocordova",
+  "description": "irradiance forecasts",
+  "author": "Dutchman",
+  "icons": [],
+  "start_url": "index.html"
+}

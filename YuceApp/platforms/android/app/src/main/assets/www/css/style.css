@@ -1,0 +1,38 @@
+body {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    height: 100%;
+    background: rgb(219, 7, 43);
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    -webkit-tap-highlight-color: transparent;
+    -webkit-font-smoothing: antialiased;
+}
+
+header {
+    position: fixed;
+    left: 25%;
+    margin: 1em 1;
+    font-size: 1.7em;
+    padding: 0.9em;
+  }
+  
+.plotselections {
+    position:absolute;
+    bottom:0;
+    margin-left: 10%;
+    margin-bottom: 10%;
+}
+
+select, button {
+    font-size: 20px;
+}
+
+.curve_chart {
+    position:relative;
+    margin-top: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+}

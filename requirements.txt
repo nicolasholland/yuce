@@ -6,7 +6,6 @@ matplotlib
 seaborn
 gunicorn
 flask
-pvlib
 siphon
 tables
 netcdf4

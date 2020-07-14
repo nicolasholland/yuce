@@ -3,7 +3,7 @@ google.charts.setOnLoadCallback(drawLineChart);
 
 
 function getData () {
-    $.get("http://wodeyuce.herokuapp.com/data.json", function (jsonresponse) {
+    $.get("https://wodeyuce.herokuapp.com/data.json", function (jsonresponse) {
         localStorage["data"] = JSON.stringify(jsonresponse);
     }, "json");
 

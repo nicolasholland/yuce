@@ -50,7 +50,7 @@ def clearcache(files):
             print(err)
 
 def download_data(latitude, longitude):
-    start = pd.Timestamp(datetime.date.today())
+    start = pd.Timestamp(datetime.date.today(), tz="UTC")
     end = start + pd.Timedelta(days=2)
     gfs = GFS()
 

@@ -11,7 +11,22 @@ function getData () {
     return data;
 }
 
-function state1() {
+
+function satellite () {
+    var chart = document.getElementById('lineplot');
+    if (chart.style.display == "block") {
+        chart.style.display = "none";
+    }
+}
+
+function nwp () {
+    var chart = document.getElementById('lineplot');
+    if (chart.style.display == "none") {
+        chart.style.display = "block";
+    }
+}
+
+function changeState(val) {
     getData();
     drawLineChart();
 }

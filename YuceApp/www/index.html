@@ -17,11 +17,20 @@
 
     <div class="curve_chart" id="lineplot"></div>
 
+    <div class="systemselections" id="container">
+        <button type="button" onclick="satellite()">ひまわり</button>
+        <button type="button" onclick="nwp()">GFS</button>
+    </div>
+
+    <div class="satellite" id="satellite">
+
+    </div>
+
     <div class="plotselections" id="container">
-            <button type="button" onclick="state1()">北京</button>
-            <button type="button" onclick="state2()">上海</button>
-            <button type="button" onclick="state3()">台北</button>
-            <button type="button" onclick="state4()">新加坡</button>   
+            <button type="button" onclick="changeState(1)">北京</button>
+            <button type="button" onclick="changeState(2)">上海</button>
+            <button type="button" onclick="changeState(3)">台北</button>
+            <button type="button" onclick="changeState(4)">新加坡</button>
     </div>
 </body>
 </html>

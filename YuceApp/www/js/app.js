@@ -16,13 +16,20 @@ function getData () {
 
 function satellite () {
     var chart = document.getElementById('lineplot');
-    if (chart.style.display == "block") {
-        chart.style.display = "none";
+    var satimg = document.getElementById('satellite');
+
+    chart.style.display = "none";
+    if (satimg.style.display == "none") {
+        satimg.style.display = "block";
     }
+
 }
 
 function nwp () {
     var chart = document.getElementById('lineplot');
+    var satimg = document.getElementById('satellite');
+
+    satimg.style.display = "none";
     if (chart.style.display == "none") {
         chart.style.display = "block";
     }
